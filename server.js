@@ -8,6 +8,7 @@ const router = require ('./router');
 
 app.use(cors());
 app.use(express .json());
+app.use('/api', router);
 
 const uri = 'mongodb+srv://dana:Gm374@cluster0.kq1cggv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
@@ -23,7 +24,5 @@ const connect = async () =>{
 connect();
 
 const server = app.listen(port , host , () =>{
-    console.log('Node server is listening to ${server.address().port}')
-})
-
-app.use('/api', router);  
+    console.log(`Node server is listening to ${server.address().port}`);
+});

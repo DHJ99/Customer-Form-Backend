@@ -15,7 +15,7 @@ const  addUser = (req , res , next )=>{
         id: req.body.id,
         name: req.body.name
     });
-    user.save;
+    user.save
         .then(response=> {
             res.json({response})
         })
@@ -34,10 +34,23 @@ const updateUser = (req , res , next )=> {
             res.json({message : error})
         })
 
-}
+};
 
-
+const deleteUser =  (req , res , next )=>{
+    const{id} = req.body.id;
+    User.deleteOne({id:id})
+        .then(response=> {
+            res.json({response})
+        })
+        .catch(error =>{
+            res.json({message : error})
+        })
+};
 
 exports.getUsers= getUsers;
 exports.addUser=addUser;
+exports.updateUser = updateUser;
+exports.deleteUser = deleteUser;
+
+
 

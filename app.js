@@ -13,15 +13,26 @@ app.use(
 app.use(express.json());
 
 app.get('/users', (req , res) => {
-    controller.getUsers(users => {
-        res.send(users);
+    controller.getUsers((req , res , next) => {
+        res.send();
     });
 });
 
-app.get('/user', (req , res) => {
-    const id =req.query.id;
-    controller.getUsers(id , user => {
-        res.send(user);
+app.post('/createuser', (req , res) => {
+    controller.addUsers(req.body , (callback) => {
+        res.send();
+    });
+});
+
+app.put('/updateuser', (req , res) => {
+    controller.updateUsers(req.body , (callback) => {
+        res.send(callback);
+    });
+});
+
+app.delete('/deleteuser', (req , res) => {
+    controller.deleteUsers(req.body , (callback) => {
+        res.send();
     });
 });
 

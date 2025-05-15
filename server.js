@@ -1,11 +1,13 @@
-const app = require('/app');
-const port = 3000;
+const express = require('express');
+const app = express();
+const cors = require('cors');
+const port = 3001;
 const host = '127.0.0.1';
 const mongoose = require('mongoose');
 const router = require ('./router');
 
 app.use(cors());
-app.use(XPathExpression.json());
+app.use(express .json());
 
 const uri = 'mongodb+srv://dana:Gm374@cluster0.kq1cggv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
@@ -24,4 +26,4 @@ const server = app.listen(port , host , () =>{
     console.log('Node server is listening to ${server.address().port}')
 })
 
-app.use('/api', router);
+app.use('/api', router);  

@@ -1,7 +1,25 @@
+const User = require ('./model');
 
-
-const getUser= (cb) =>{
-    cb(users);
+const getUsers = (req , res , next )=>{
+    User.find()
+        .then(response=> {
+            res.json({response})
+        })
+        .catch(error =>{
+            res.json({message : error})
+        })
 };
 
+const  addUser = (req , res , next )=>{
+    const user = new User ({
+        id: req.body.id,
+        name: req.body.name
+    });
+    user.save;
+};
+
+
+
+exports.getUsers= getUsers;
+exports.addUser=addUser;
 

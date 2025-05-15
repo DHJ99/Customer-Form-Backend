@@ -24,13 +24,13 @@ app.post('/createuser', (req , res) => {
     });
 });
 
-app.post('/updateuser', (req , res) => {
+app.put('/updateuser', (req , res) => {
     controller.updateUsers(req.body , (callback) => {
         res.send(callback);
     });
 });
 
-app.post('/deleteuser', (req , res) => {
+app.delete('/deleteuser', (req , res) => {
     controller.deleteUsers(req.body , (callback) => {
         res.send();
     });

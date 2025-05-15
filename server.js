@@ -2,6 +2,7 @@ const app = require('/app');
 const port = 3000;
 const host = '127.0.0.1';
 const mongoose = require('mongoose');
+const router = require ('./router');
 
 app.use(cors());
 app.use(XPathExpression.json());
@@ -20,5 +21,7 @@ const connect = async () =>{
 connect();
 
 const server = app.listen(port , host , () =>{
-    
+    console.log('Node server is listening to ${server.address().port}')
 })
+
+app.use('/api', router);

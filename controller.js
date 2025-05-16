@@ -11,17 +11,21 @@ const getUsers = (req , res , next )=>{
 };
 
 const  addUser = (req , res , next )=>{
-    const user = new User ({
+    if (!req.body) {
+        return res.status(400).json({ message: "Request body is missing" });
+    }
+
+    const user = new User({
         id: req.body.id,
         name: req.body.name
     });
-    user.save
-        .then(response=> {
-            res.json({response})
-        })
-        .catch(error =>{
-            res.json({message : error})
-        })
+    user.save()
+            .then(response => {
+                res.json({ response })
+            })
+            .catch(error => {
+                res.json({ message: error })
+            })
 };
 
 const updateUser = (req , res , next )=> {
@@ -38,12 +42,12 @@ const updateUser = (req , res , next )=> {
 
 const deleteUser =  (req , res , next )=>{
     const{id} = req.body.id;
-    User.deleteOne({id:id})
-        .then(response=> {
-            res.json({response})
+     User.deleteOne({ id: id })
+        .then(response => {
+            res.json({ response })
         })
-        .catch(error =>{
-            res.json({message : error})
+        .catch(error => {
+            res.json({ message: error })
         })
 };
 

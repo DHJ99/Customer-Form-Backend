@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express .json());
 app.use('/api', router);
 
-const uri = 'mongodb+srv://dana:Dhana1234@cluster0.fdxg1mp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const uri = 'mongodb+srv://dana:Dhana1234@cluster0.zfurkw5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
 const connect = async () =>{
     try {

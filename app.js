@@ -3,6 +3,7 @@ const app = express();
 const cors = require ('cors');
 
 app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 
 app.use(
     express.urlencoded({
@@ -19,19 +20,19 @@ app.get('/users', (req , res) => {
 });
 
 app.post('/createuser', (req , res) => {
-    controller.addUsers(req.body , (callback) => {
+    controller.addUser(req.body , (callback) => {
         res.send();
     });
 });
 
 app.put('/updateuser', (req , res) => {
-    controller.updateUsers(req.body , (callback) => {
+    controller.updateUser(req.body , (callback) => {
         res.send(callback);
     });
 });
 
 app.delete('/deleteuser', (req , res) => {
-    controller.deleteUsers(req.body , (callback) => {
+    controller.deleteUser(req.body , (callback) => {
         res.send();
     });
 });
